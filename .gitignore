@@ -1,0 +1,11 @@
+.idea
+node_modules
+.vimrc
+[Dd]ebug/
+[Rr]elease/
+x64/
+[Bb]in/
+[Oo]bj/A
+*.log
+.DS_Store
+
