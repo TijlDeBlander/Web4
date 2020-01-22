@@ -9,3 +9,5 @@ x64/
 *.log
 .DS_Store
 
+
+Backend/Backend/appsettings.Development.json

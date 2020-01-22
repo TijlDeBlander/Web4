@@ -1,3 +1,8 @@
+using System;
+using System.Net.Http;
+using Backend.Domain.Helpers;
+using Backend.Domain.Models;
+using Backend.Domain.Requests;
 using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -9,21 +14,34 @@ namespace Backend.Controllers
     public class AuthenticationController : ControllerBase
     {
         private UserService _us;
-        public AuthenticationController(UserService us)
+        public AuthenticationController(UserService us )
         {
             _us = us;
         }
         [HttpPost]
         [Route("register")]
-        public void Register()
+        public ActionResult Register( RegisterRequest request)
         {
+            if(!EmailValidator.IsValidEmail(request.Email))
+                return BadRequest("Email does not exist");
+            if (_us.EmailAlreadyUsed(request.Email))
+                return BadRequest("Email already registered");
+            
+            return Ok(_us.AddUser(request));
         }
 
-        [HttpGet]
+        
+        [HttpPost]
         [Route("login")]
-        public void Login()
+        public ActionResult Login(LoginRequest login)
         {
-         _us.TestDatabase();   
+            if (!_us.EmailAlreadyUsed(login.Email))
+                return BadRequest("This email is not connected to an account");
+            if (_us.AuthorizeUser(login))
+            {
+                return Ok(_us.getToken(login.Email));
+            }
+            return BadRequest("Email and password do not match");
         }
     }
 }
