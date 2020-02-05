@@ -1,0 +1,41 @@
+<header *ngIf="authenticated" class="header-4">
+  <div class="branding">
+    <a [routerLink]="'product-overview'" class="nav-link">
+      <clr-icon shape="flask" class="is-inverse"></clr-icon>
+      <span class="title">Drugs store</span>
+    </a>
+  </div>
+  <div class="branding">
+    <a  [routerLink]="'cart'"  style="color: white" class="nav-link">
+      <clr-icon shape="shopping-cart" class="is-inverse"></clr-icon>
+      My cart
+    </a>
+  </div>
+
+    <div *ngIf="user?.role === 'Admin'" class="branding">
+      <a  [routerLink]="'user-panel'"  style="color: white" class="nav-link">
+        <clr-icon shape="administrator" class="is-inverse"></clr-icon>
+        User panel
+      </a>
+    </div>
+    <div *ngIf="user?.role === 'Admin'" class="branding">
+      <a  [routerLink]="'product-manager'"  style="color: white" class="nav-link">
+        <clr-icon shape="objects" class="is-inverse"></clr-icon>
+        Product panel
+      </a>
+    </div>
+
+  <div class="header-actions">
+    <clr-dropdown>
+      <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
+       {{user?.email}}
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+
+        <a (click)="logout()" clrDropdownItem>Log out</a>
+
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</header>

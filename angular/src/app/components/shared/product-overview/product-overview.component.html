@@ -1,0 +1,30 @@
+<div style="width: 100%" class="clr-row container">
+
+
+<div *ngFor="let p of (products | async)">
+
+  <div  class="clr-col-4 clr-col-lg-10">
+    <div style="overflow: auto; height: 300px; width: 200px"  class="card">
+      <div class="card-header">
+    {{p.name}}
+      </div>
+      <div class="card-block">
+        <img src="../../../../assets/spuit.svg" height="100px" class="card-media-image">
+
+        <div *ngIf="p.discount != null" >
+          <p></p>
+          <span class="strikethrough card-text ">{{p.price}}</span> {{p.priceWithDiscount}}
+        </div>
+
+        <div *ngIf="p.discount == null">
+          <span></span>
+        <p>  {{p.price}}</p>
+        </div>
+      </div>
+     <div class=" text-center card-footer">
+      <button (click)="emitProduct(p)" class="btn btn-outline ">{{actionText}}</button>
+    </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Text.Json;
 using Backend.Domain.Helpers;
 using Backend.Domain.Models;
 using Backend.Domain.Requests;
@@ -35,13 +36,21 @@ namespace Backend.Controllers
         [Route("login")]
         public ActionResult Login(LoginRequest login)
         {
+            
             if (!_us.EmailAlreadyUsed(login.Email))
                 return BadRequest("This email is not connected to an account");
             if (_us.AuthorizeUser(login))
             {
-                return Ok(_us.getToken(login.Email));
+                return Ok(JsonSerializer.Serialize(_us.GetToken(login.Email)));
             }
             return BadRequest("Email and password do not match");
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public User getUser(string id)
+        {
+            return _us.GetUser(id);
         }
     }
 }

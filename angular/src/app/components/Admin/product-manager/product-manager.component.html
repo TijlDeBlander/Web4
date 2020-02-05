@@ -1,0 +1,6 @@
+<div style="width: 30%;margin: 0% 35%">
+  <app-product-form [create]="true"></app-product-form>
+</div>
+<div style="width: 80%;margin: 0% 10%">
+  <app-product-overview [actionText]="'Edit'" (productEmitter)="editProduct($event)"></app-product-overview>
+</div>

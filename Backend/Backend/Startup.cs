@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Backend.Data;
 using Backend.Domain.Helpers;
+using Backend.Domain.Models;
 using Backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MongoDB.Bson.Serialization;
 
 namespace Backend
 {
@@ -33,7 +35,10 @@ namespace Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            BsonClassMap.RegisterClassMap<PercentageDiscount>();
+            BsonClassMap.RegisterClassMap<AbsoluteDiscount>();
+            services.AddControllers()
+                .AddNewtonsoftJson();
 
             services.Configure<DatabaseSettings>(
                 Configuration.GetSection(nameof(DatabaseSettings)));
@@ -69,6 +74,7 @@ namespace Backend
                     };
                 });
             services.AddSingleton<UserService>();
+            services.AddSingleton<ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

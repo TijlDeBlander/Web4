@@ -43,6 +43,14 @@
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Mollie.Api": {
+              "target": "Package",
+              "version": "[2.0.7.1, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.10.1, )"

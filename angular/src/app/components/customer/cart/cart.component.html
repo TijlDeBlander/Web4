@@ -1,0 +1,30 @@
+<div style="width: 100%" class="container text-center">
+  <div style="margin: auto">
+    <h2>Your cart!</h2>
+
+    <table class="table " >
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of cart">
+        <td>{{c.name}}</td>
+        <td *ngIf="c.priceWithDiscount != 0">{{c.priceWithDiscount}}</td>
+        <td *ngIf="c.priceWithDiscount === 0">{{c.price}}</td>
+        <td>{{c.amount}}</td>
+        <td  *ngIf="c.priceWithDiscount != 0">{{total(c.amount, c.priceWithDiscount)}}</td>
+        <td  *ngIf="c.priceWithDiscount === 0">{{total(c.amount, c.price)}}</td>
+        <td (click)="delete(c)">Delete</td>
+      </tr>
+      </tbody>
+    </table>
+    <p>Total: {{totalPrice}}</p>
+    <button style="margin: 10px 0px" class="btn btn-primary">Buy</button>
+  </div>
+
+</div>

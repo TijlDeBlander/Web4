@@ -1,0 +1,41 @@
+<span *ngIf="loader" class="spinner"></span>
+<div>
+<h3 *ngIf="!loader">Create a Product</h3>
+<form class="text-center" [formGroup]="productForm" (ngSubmit)="submit(productForm.value)" clrForm>
+  <clr-input-container>
+    <label>Name</label>
+    <input clrInput type="text" formControlName="name" required />
+    <clr-control-error>Name cannot be empty and needs to contain at least 2 characters!</clr-control-error>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Price</label>
+    <input clrInput type="number" min="1" formControlName="price" required />
+    <clr-control-error>Price must be higher than 0!</clr-control-error>
+  </clr-input-container>
+  &nbsp;
+  <clr-accordion>
+    <clr-accordion-panel>
+      <clr-accordion-title>Discount</clr-accordion-title>
+      <clr-accordion-content *clrIfExpanded>
+        <clr-input-container>
+          <label>Amount</label>
+          <input clrInput type="number" min="1" formControlName="discountAmount" required />
+          <clr-control-error>Amount must be higher than 0!</clr-control-error>
+        </clr-input-container>
+        <clr-select-container>
+          <label>Type discount</label>
+          <select clrSelect name="type discount" formControlName="discountIsAbsolute">
+            <option value="true">Absolute</option>
+            <option value="false">Percentage</option>
+          </select>
+        </clr-select-container>
+        <clr-input-container>
+          <label>Reason</label>
+          <input clrInput type="text" formControlName="reason">
+        </clr-input-container>
+      </clr-accordion-content>
+    </clr-accordion-panel>
+  </clr-accordion>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
