@@ -11,11 +11,11 @@ import {Register} from '../../../models/requests/register';
 })
 export class RegisterComponent implements OnInit {
   private registerForm: FormGroup;
+  private serverError: string
   constructor(private as: AuthenticationService,
               private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      email: ['example@mail.com',[Validators.email,Validators.required] ],
-      birthdate: ['',[Validators.required] ],
+      email: ['',[Validators.email,Validators.required] ],
       password: ['', [Validators.required]]
     });
   }
@@ -23,9 +23,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(value){
+  submit(value){
     let l: Register = value;
-    this.as.register(l).subscribe(res => console.log(res), error => console.log(error))
+    this.as.register(l).subscribe(res => console.log(res), error =>
+      this.serverError = error.error)
   }
 
 }

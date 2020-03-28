@@ -9,6 +9,7 @@ import {MainPageComponent} from './components/customer/main-page/main-page.compo
 import {AuthGuardService} from './_helpers/AuthGuardService';
 import {CartComponent} from './components/customer/cart/cart.component';
 import {RoleGuardService} from './_helpers/RoleGuardService';
+import {UserManagerComponent} from './components/Admin/user-manager/user-manager.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,14 @@ const routes: Routes = [
     path:'edit-product/:id',
     component: ProductFormComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'user-manager',
+    component: UserManagerComponent,
+    canActivate: [RoleGuardService],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
     path:'cart',

@@ -19,7 +19,7 @@ import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {AuthGuardService} from './_helpers/AuthGuardService';
 import { CartComponent } from './components/customer/cart/cart.component';
 import {RoleGuardService} from './_helpers/RoleGuardService';
-
+import {UserManagerComponent} from './components/Admin/user-manager/user-manager.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import {RoleGuardService} from './_helpers/RoleGuardService';
     MainPageComponent,
     NavbarComponent,
     CartComponent,
+    UserManagerComponent
   ],
   imports: [
     BrowserModule,

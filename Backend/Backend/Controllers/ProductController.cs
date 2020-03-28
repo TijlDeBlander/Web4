@@ -73,6 +73,6 @@ namespace Backend.Controllers
             Console.WriteLine(prod.Id);
             return _ps.UpdateProduct(prod);
         }
-        
+
     }
 }

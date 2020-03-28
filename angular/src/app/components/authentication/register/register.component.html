@@ -1,26 +1,16 @@
 <div class="text-center">
-  <form [formGroup]="registerForm" (ngSubmit)="login(registerForm.value)">
+  <h2>Create a new customer</h2>
+  <form clrForm [formGroup]="registerForm"  (ngSubmit)="submit(registerForm.value)">
     <clr-input-container>
-      <input
-        class="form-control"
-        formControlName="email"
-        input="text"
-      >
+      <label>Email</label>
+      <input clrInput type="text" formControlName="email" required />
+      <clr-control-error>Enter a valid email!</clr-control-error>
     </clr-input-container>
-
-    <clr-input-container>
-
-    </clr-input-container>
-    <input
-    class="form-control"
-    formControlName="birthdate"
-    type="date"
-    >
-    <input
-      class="form-control"
-      formControlName="password"
-      type="password"
-    >
-    <button type="submit" class="Normal">Login</button>
+  <clr-input-container>
+    <label>Password</label>
+    <input clrInput type="password" formControlName="password" required />
+  </clr-input-container>
+    <clr-control-error *ngIf="serverError !== undefined" class="error active">{{serverError}}</clr-control-error>
+    <button class="btn btn-primary" type="submit" >Submit</button>
   </form>
 </div>
