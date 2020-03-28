@@ -31,6 +31,7 @@ namespace Backend.Domain.Models
             Cart = new Dictionary<string, int>();
             Email = r.Email;
             BirthDate = r.BirthDate;
+            Role = r.Role;
             byte[] data = System.Text.Encoding.ASCII.GetBytes(r.Password);
                 Password = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
         }

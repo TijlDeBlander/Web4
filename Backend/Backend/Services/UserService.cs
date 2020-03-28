@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -103,6 +104,11 @@ namespace Backend.Services
             var filter = Builders<User>.Filter.Eq("Id",Uid);
             var update = Builders<User>.Update.Set("Cart", user.Cart);
             _users.UpdateOne(filter, update); 
+        }
+
+        public List<User> GetCustomers()
+        {
+            return _users.FindSync(u => u.Role.Equals("Customer")).ToList();
         }
     }
 }

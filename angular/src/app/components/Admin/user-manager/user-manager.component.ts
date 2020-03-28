@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../../services/authentication.service';
+import {CustomerService} from '../../../services/customer.service';
 
 @Component({
   selector: 'app-user-manager',
@@ -8,12 +9,12 @@ import {AuthenticationService} from '../../../services/authentication.service';
 })
 export class UserManagerComponent implements OnInit {
 
-  constructor(private as: AuthenticationService) {
+  constructor(private cs: CustomerService) {
 
   }
 
   ngOnInit() {
-
+    this.cs.getAll().subscribe(c => console.log(c))
   }
 
 

@@ -1,16 +1,29 @@
 <div class="text-center">
   <h2>Create a new customer</h2>
-  <form clrForm [formGroup]="registerForm"  (ngSubmit)="submit(registerForm.value)">
+  <form clrForm  [formGroup]="registerForm"  (ngSubmit)="submit(registerForm.value)">
+    <input style="display:none" type="text" name="fakeusernameremembered"/>
+    <input style="display:none" type="password" name="fakepasswordremembered"/>
     <clr-input-container>
       <label>Email</label>
-      <input clrInput type="text" formControlName="email" required />
+      <input clrInput type="text" autocomplete="off" formControlName="email" required />
       <clr-control-error>Enter a valid email!</clr-control-error>
     </clr-input-container>
   <clr-input-container>
     <label>Password</label>
-    <input clrInput type="password" formControlName="password" required />
+    <input autocomplete="new-password" clrInput type="password" formControlName="password" required />
   </clr-input-container>
-    <clr-control-error *ngIf="serverError !== undefined" class="error active">{{serverError}}</clr-control-error>
-    <button class="btn btn-primary" type="submit" >Submit</button>
+    <clr-radio-container clrInline>
+      <label>Role</label>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="role" required value="Admin" formControlName="role" />
+        <label>Admin</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="role" checked required value="Customer" formControlName="role" />
+        <label>Customer</label>
+      </clr-radio-wrapper>
+    </clr-radio-container>
+    <clr-control-error style="color:red;" *ngIf="serverError !== undefined" class="error active">{{serverError}}</clr-control-error>
+    <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid" >Submit</button>
   </form>
 </div>

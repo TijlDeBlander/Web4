@@ -11,6 +11,8 @@ namespace Backend.Domain.Requests
         public string Password { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
+        
+        public string Role { get; set; }
 
         public RegisterRequest()
         {
