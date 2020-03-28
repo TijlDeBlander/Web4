@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public serverError: string;
-  private loginForm: FormGroup;
+  public loginForm: FormGroup;
   constructor(private as: AuthenticationService,
               private fb: FormBuilder,
               private router: Router) {

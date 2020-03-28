@@ -10,8 +10,8 @@ import {Register} from '../../../models/requests/register';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  private registerForm: FormGroup;
-  private serverError: string
+  public registerForm: FormGroup;
+  public serverError: string;
   constructor(private as: AuthenticationService,
               private fb: FormBuilder) {
     this.registerForm = this.fb.group({
