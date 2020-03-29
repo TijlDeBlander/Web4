@@ -110,6 +110,15 @@ namespace Backend.Services
         {
             return _users.FindSync(u => u.Role.Equals("Customer")).ToList();
         }
+
+        public User DeleteUser(string id)
+        {
+            User user = GetUser(id);
+            if (_users.DeleteOne(u => u.Id.Equals(id)).IsAcknowledged)
+                return user;
+            else
+                return null;
+        }
     }
 }
     

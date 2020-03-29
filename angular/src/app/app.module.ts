@@ -20,6 +20,7 @@ import {AuthGuardService} from './_helpers/AuthGuardService';
 import { CartComponent } from './components/customer/cart/cart.component';
 import {RoleGuardService} from './_helpers/RoleGuardService';
 import {UserManagerComponent} from './components/Admin/user-manager/user-manager.component';
+import { CustomerOverviewComponent } from './components/customer/customer-overview/customer-overview.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {UserManagerComponent} from './components/Admin/user-manager/user-manager
     MainPageComponent,
     NavbarComponent,
     CartComponent,
-    UserManagerComponent
+    UserManagerComponent,
+    CustomerOverviewComponent
   ],
   imports: [
     BrowserModule,

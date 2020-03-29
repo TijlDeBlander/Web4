@@ -24,5 +24,12 @@ namespace Backend.Controllers
         {
             return _us.GetCustomers();
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public User Deleteuser(string id)
+        {
+            return _us.DeleteUser(id);
+        }
     }
 }

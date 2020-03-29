@@ -1,0 +1,22 @@
+<h1>Customer overview</h1>
+<div style="width: 100%" class="clr-row container">
+
+  <div *ngFor="let c of (users | async)">
+
+    <div  class="clr-col-4 clr-col-lg-10">
+      <div style="overflow: auto; height: 300px; width: 200px"  class="card">
+        <div class="card-header">
+          {{c.email}}
+        </div>
+        <div class="card-block">
+          <img src="../../../../assets/person.png" width="100%" height="100px" class="card-media-image">
+
+            <p>  {{c.birthDate | date: 'longDate'}}</p>
+        </div>
+        <div class=" text-center card-footer">
+          <button (click)="emitCustomer(c)" class="btn btn-outline ">{{actionText}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

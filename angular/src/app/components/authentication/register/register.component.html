@@ -23,6 +23,11 @@
         <label>Customer</label>
       </clr-radio-wrapper>
     </clr-radio-container>
+    <clr-date-container>
+      <label>Enter Date</label>
+      <input type="date" name=""birthDate formControlName="birthDate" clrDate>
+    </clr-date-container>
+    <span></span>
     <clr-control-error style="color:red;" *ngIf="serverError !== undefined" class="error active">{{serverError}}</clr-control-error>
     <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid" >Submit</button>
   </form>

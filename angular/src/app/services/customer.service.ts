@@ -14,7 +14,11 @@ export class CustomerService {
   private url = `${environment.apiUrl}customer/`;
   constructor(private http: HttpClient, private as: AuthenticationService, private ps: ProductService) { }
 
-  public getAll(): Observable<User> {
-    return this.http.get<User>(`${this.url}GetAll`);
+  public getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}GetAll`);
+  }
+
+  public delete(id): Observable<User>{
+    return this.http.delete<User>(`${this.url}${id}`);
   }
 }
